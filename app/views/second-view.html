@@ -1,0 +1,27 @@
+    <form>
+        <div>
+        <label>Enter new message : </label>
+        <input type="text" 
+        [ngModel]="message"
+        (ngModelChange)="message = $event; validateNewMessage($event)"
+        />
+        <button class="myButton"  [disabled] = "!isNewMessageValid"
+        (click)="addMessage();">
+            Add</button>
+            </div>
+        <div class="error" *ngIf="errors && errors.length>0">
+             <ul>
+      <li *ngFor="#error of errors">
+   {{error}}
+      </li>
+    </ul>
+        </div>
+
+ 
+    </form>
+    <ul>
+      <li *ngFor="#message of messages">
+   {{message.text}}
+      </li>
+    </ul>
+<button class="myButton" (click)="goToFirst()">Back To First</button>
